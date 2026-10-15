@@ -318,3 +318,9 @@ isort --check-only .
 - Proper API keys configured in `.env` file
 
 This guide provides everything needed to efficiently work with the PAL MCP Server codebase using Claude. Always run quality checks before and after making changes to ensure code integrity.
+
+<!-- COST_AWARE_DELEGATION:BEGIN -->
+## Cost-aware delegation
+
+Follow the [repository cost-aware delegation policy](AGENTS.md#cost-aware-delegation). Use current qualified routes, bounded ownership, output verification, evidence-based escalation, and otherwise authorized direct execution when delegation is unsupported. Preserve pinned bindings, budgets, safety, one-writer rules, and independent audits.
+<!-- COST_AWARE_DELEGATION:END -->
