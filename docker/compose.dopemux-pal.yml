@@ -1,0 +1,38 @@
+# Isolated ownership for the Dopemux PAL stdio service.
+name: dopemux-pal-kimi
+services:
+  pal-stdio:
+    container_name: mcp-pal-stdio
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks: [dopemux-network]
+    image: pal-mcp-server:9.8.2-broker
+    build:
+      context: ${PAL_RELEASE_ROOT:?Set PAL_RELEASE_ROOT to the PAL source directory}
+      dockerfile: Dockerfile
+      target: runtime
+    environment:
+      PAL_BROKER_FIRST: "true"
+      CHEAPERINFERENCE_API_KEY: ${CHEAPERINFERENCE_API_KEY:?CheaperInference key required}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:?OpenRouter key required}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      XAI_API_KEY: ${XAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_WORKSPACE_ID: ${ANTHROPIC_WORKSPACE_ID:-}
+      LOG_LEVEL: INFO
+    command: ["sleep", "infinity"]
+    volumes:
+      - ${DOPEMUX_ROOT:?Set DOPEMUX_ROOT to the Dopemux checkout}/docker/mcp-servers-source/pal/pal-mcp-server/conf/cli_clients:/app/conf/cli_clients:ro
+    healthcheck:
+      test: ["CMD", "/app/.venv/bin/python", "-c", "import server"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+
+
+networks:
+  dopemux-network:
+    external: true
+    name: dopemux-network

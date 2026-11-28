@@ -1,0 +1,48 @@
+#!/bin/bash
+# Workstation deployment of just the PAL stdio service. Read credentials from the
+# caller's environment or macOS Keychain. Never print a resolved Compose config.
+set -euo pipefail
+PAL_RELEASE_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+export PAL_RELEASE_ROOT
+export DOPEMUX_ROOT="${DOPEMUX_ROOT:-$HOME/code/dopemux-mvp}"
+export COMPOSE_PROJECT_NAME="dopemux-pal-kimi"
+command -v dopemux >/dev/null || { echo "dopemux CLI is required" >&2; exit 1; }
+
+# Compose selects members by project/service labels, not just container name.
+project_members="$(docker ps -aq --no-trunc --filter "label=com.docker.compose.project=$COMPOSE_PROJECT_NAME")"
+target_members="$(docker ps -aq --no-trunc --filter 'name=^/mcp-pal-stdio$')"
+if [[ "$project_members" == *$'\n'* || "$target_members" == *$'\n'* ]]; then
+  echo "Ambiguous PAL container ownership; refusing deployment" >&2
+  exit 1
+fi
+if [[ -n "$target_members" ]]; then
+  owner="$(docker inspect "$target_members" --format '{{index .Config.Labels "com.docker.compose.project"}}|{{index .Config.Labels "com.docker.compose.service"}}')"
+  if [[ "$owner" != "$COMPOSE_PROJECT_NAME|pal-stdio" ]]; then
+    echo "PAL belongs to another Compose owner; preserve sessions and migrate explicitly first" >&2
+    exit 1
+  fi
+fi
+if [[ -n "$project_members" && "$project_members" != "$target_members" ]]; then
+  echo "Isolated PAL project has an unexpected member; refusing deployment" >&2
+  exit 1
+fi
+
+for name in CHEAPERINFERENCE_API_KEY OPENROUTER_API_KEY OPENAI_API_KEY GEMINI_API_KEY XAI_API_KEY ANTHROPIC_API_KEY; do
+  if [[ -z "${!name:-}" ]]; then
+    if [[ "$name" == CHEAPERINFERENCE_API_KEY ]]; then
+      value="$(security find-generic-password -s cheaperinference -a API_KEY -w 2>/dev/null || true)"
+    else
+      value="$(security find-generic-password -s "$name" -w 2>/dev/null || true)"
+    fi
+    export "$name=$value"
+  fi
+done
+
+# The supported legacy MCP command reads compose.yml from its working directory.
+# Keep the canonical definition in one place; this temporary link contains no keys.
+compose_work_dir="$(mktemp -d "${TMPDIR:-/tmp}/pal-stdio-compose.XXXXXX")"
+cleanup() { rm -f "$compose_work_dir/compose.yml"; rmdir "$compose_work_dir"; }
+trap cleanup EXIT
+ln -s "$PAL_RELEASE_ROOT/docker/compose.dopemux-pal.yml" "$compose_work_dir/compose.yml"
+cd "$compose_work_dir"
+dopemux mcp up --services pal-stdio

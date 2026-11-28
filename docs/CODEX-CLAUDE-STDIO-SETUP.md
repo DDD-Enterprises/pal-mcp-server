@@ -6,7 +6,35 @@ long-lived container and Codex or Claude Code spawn `server.py` per session.
 PAL is **stdio-only**. It does not expose HTTP/SSE on port 3003. Configuring
 `"type": "sse"` with `http://localhost:3003/sse` will always fail handshake.
 
-## Architecture
+## Broker-first workstation installation
+
+The workstation stdio service uses PAL 9.8.2. Codex, Claude, Grok, OpenCode and Gemini can connect with the same command.
+
+```sh
+docker exec -i mcp-pal-stdio /app/.venv/bin/python server.py
+```
+
+With `PAL_BROKER_FIRST=true`, PAL resolves an exact model or alias against configured providers in this order.
+
+1. CheaperInference, with its own credential and fixed HTTPS endpoint.
+2. OpenRouter, using the authenticated account's interactive model catalog.
+3. A configured native provider with a matching model.
+
+A request error ends the attempt. An HTTP 402 from OpenRouter requires OpenRouter credit for that route. Use `listmodels` to see the effective route for each name. Model catalog membership describes selection and does not guarantee account credit or provider capacity.
+
+For example, supply `gpt-6.2-sol`, `gemini-4-neon`, `grok-4.7`, or `claude-sonnet-5-5` in a tool's model field. For consensus, supply one entry per participant in `models` on the first step. Pass the returned `continuation_offer.continuation_id` on the next step in the same MCP session.
+
+The maintained service definition is `docker/compose.dopemux-pal.yml`. Run `scripts/pal-stdio-compose` from this checkout for a service rebuild during a maintenance window; it requires the Dopemux CLI and launches through `dopemux mcp up --services pal-stdio`. It uses the isolated Compose project `dopemux-pal-kimi`, verifies project/service ownership before launch, and reads credentials from the environment or macOS Keychain. It refuses a target owned by another project or an ambiguous project membership. Migrate legacy ownership explicitly while preserving existing sessions first; the script never renames or removes a foreign container. Existing stdio processes keep their own in-memory continuations until their clients exit. Avoid launching the separately vendored shared-project PAL definition against this installation.
+
+To update the catalog snapshot, save the authenticated JSON responses from CheaperInference `GET /v1/models` and OpenRouter `GET /api/v1/models/user` to local files, then run:
+
+```sh
+python scripts/refresh_broker_catalogs.py cheaperinference.json openrouter.json
+```
+
+Review the catalog diff and run the provider tests before rebuilding. Primary and secondary projections are compiled together. Batch and non-chat modalities are excluded. CheaperInference Pro variants with a documented Responses route use that endpoint and preserve the explicitly requested Pro mode.
+
+## Standalone container configuration
 
 ```
 Codex / Claude Code
@@ -111,7 +139,7 @@ Restart Codex after editing this file.
 
 The Dopemux monorepo also defines `mcp-pal` (HTTP, port 3003) and `mcp-pal-stdio`.
 That stack is **separate** from this standalone `~/code/pal-mcp-server` checkout.
-Codex config in this setup targets **`pal-mcp-server`** from this repo's `docker compose`.
+The standalone example targets **`pal-mcp-server`**. The broker-first workstation installation above uses **`mcp-pal-stdio`**.
 
 ## Example config files (in repo)
 

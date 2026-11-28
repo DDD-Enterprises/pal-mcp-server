@@ -44,6 +44,7 @@ class CLIClientConfig(BaseModel):
     """Raw CLI client configuration before internal defaults are applied."""
 
     name: str
+    runner: str | None = None
     command: str | None = None
     working_dir: str | None = None
     additional_args: list[str] = Field(default_factory=list)

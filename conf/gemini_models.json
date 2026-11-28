@@ -245,6 +245,50 @@
       "supports_temperature": true,
       "max_image_size_mb": 20.0,
       "max_thinking_tokens": 24576
+    },
+    {
+      "model_name": "gemini-4-hydrogen",
+      "aliases": [
+        "google/gemini-4-hydrogen"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 1000000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true
+    },
+    {
+      "model_name": "gemini-4-argon",
+      "aliases": [
+        "google/gemini-4-argon"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 1000000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true
+    },
+    {
+      "model_name": "gemini-4-carbon",
+      "aliases": [
+        "google/gemini-4-carbon"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 524288,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true
+    },
+    {
+      "model_name": "gemini-4-neon",
+      "aliases": [
+        "google/gemini-4-neon"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 1000000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true
     }
   ]
 }

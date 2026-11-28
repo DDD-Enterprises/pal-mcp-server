@@ -393,6 +393,7 @@ def configure_providers():
         logger.debug(f"  {key}: {'[PRESENT]' if value else '[MISSING]'}")
     from providers import ModelProviderRegistry
     from providers.azure_openai import AzureOpenAIProvider
+    from providers.catalog_endpoint import AnthropicProvider, CheaperInferenceProvider
     from providers.custom import CustomProvider
     from providers.dial import DIALModelProvider
     from providers.gemini import GeminiModelProvider
@@ -495,6 +496,14 @@ def configure_providers():
     # Register providers in priority order:
     # 1. Native APIs first (most direct and efficient)
     registered_providers = []
+    for kind, provider_class in (
+        (ProviderType.CHEAPERINFERENCE, CheaperInferenceProvider),
+        (ProviderType.ANTHROPIC, AnthropicProvider),
+    ):
+        if get_env(f"{kind.value.upper()}_API_KEY"):
+            ModelProviderRegistry.register_provider(kind, provider_class)
+            registered_providers.append(kind.value)
+            valid_providers.append(provider_class.FRIENDLY_NAME)
 
     if has_native_apis:
         if gemini_key and gemini_key != "your_gemini_api_key_here":
@@ -600,7 +609,7 @@ def configure_providers():
 
         # Validate restrictions against known models
         provider_instances = {}
-        provider_types_to_validate = [ProviderType.GOOGLE, ProviderType.OPENAI, ProviderType.XAI, ProviderType.DIAL]
+        provider_types_to_validate = ModelProviderRegistry.get_available_providers()
         for provider_type in provider_types_to_validate:
             provider = ModelProviderRegistry.get_provider(provider_type)
             if provider:
@@ -894,6 +903,9 @@ def parse_model_option(model_string: str) -> tuple[str, Optional[str]]:
         tuple: (model_name, option) where option may be None
     """
     if ":" in model_string and not model_string.startswith("http"):  # Avoid parsing URLs
+        if model_string.count(":") == 1 and model_string.split(":", 1)[1].strip().lower() == "batch":
+            return model_string.strip(), None
+
         # Check if this looks like an OpenRouter model (contains /)
         if "/" in model_string and model_string.count(":") == 1:
             # Could be openai/gpt-4:something - check what comes after colon
@@ -901,7 +913,7 @@ def parse_model_option(model_string: str) -> tuple[str, Optional[str]]:
             suffix = parts[1].strip().lower()
 
             # Known OpenRouter suffixes to preserve
-            if suffix in ["free", "beta", "preview"]:
+            if suffix in ["free", "beta", "preview", "batch"]:
                 return model_string.strip(), None
 
         # For other patterns (Ollama tags, consensus stances), split normally

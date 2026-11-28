@@ -30,11 +30,11 @@ FROM python:3.11-slim AS runtime
 
 # Add metadata labels for traceability
 LABEL maintainer="PAL MCP Server Team"
-LABEL version="1.0.0"
+LABEL version="9.8.2"
 LABEL description="PAL MCP Server - AI-powered Model Context Protocol server"
 LABEL org.opencontainers.image.title="pal-mcp-server"
 LABEL org.opencontainers.image.description="AI-powered Model Context Protocol server with multi-provider support"
-LABEL org.opencontainers.image.version="1.0.0"
+LABEL org.opencontainers.image.version="9.8.2"
 LABEL org.opencontainers.image.source="https://github.com/BeehiveInnovations/pal-mcp-server"
 LABEL org.opencontainers.image.documentation="https://github.com/BeehiveInnovations/pal-mcp-server/blob/main/README.md"
 LABEL org.opencontainers.image.licenses="Apache 2.0 License"
@@ -60,7 +60,7 @@ WORKDIR /app
 COPY --chown=paluser:paluser . .
 
 # Create logs directory with proper permissions
-RUN mkdir -p logs && chown -R paluser:paluser logs
+RUN ln -s /opt/venv /app/.venv && mkdir -p logs && chown -R paluser:paluser logs
 
 # Create tmp directory for container operations
 RUN mkdir -p tmp && chown -R paluser:paluser tmp

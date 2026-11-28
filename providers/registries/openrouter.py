@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from ..registry import ModelProviderRegistry
 from ..shared import ModelCapabilities, ProviderType
 from .base import CAPABILITY_FIELD_NAMES, CapabilityModelRegistry
 
@@ -12,7 +13,9 @@ class OpenRouterModelRegistry(CapabilityModelRegistry):
     def __init__(self, config_path: str | None = None) -> None:
         super().__init__(
             env_var_name="OPENROUTER_MODELS_CONFIG_PATH",
-            default_filename="openrouter_models.json",
+            default_filename=(
+                "openrouter_chat_models.json" if ModelProviderRegistry.broker_first() else "openrouter_models.json"
+            ),
             provider=ProviderType.OPENROUTER,
             friendly_prefix="OpenRouter ({model})",
             config_path=config_path,

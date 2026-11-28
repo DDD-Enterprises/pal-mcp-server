@@ -130,9 +130,10 @@ class ClinkRegistry:
             raise RegistryLoadError(f"CLI configuration at {source_path} is missing a 'name' field")
 
         normalized_name = raw.name.strip()
-        internal_defaults = INTERNAL_DEFAULTS.get(normalized_name.lower())
+        runner = (raw.runner or normalized_name).strip().lower()
+        internal_defaults = INTERNAL_DEFAULTS.get(runner)
         if internal_defaults is None:
-            raise RegistryLoadError(f"CLI '{raw.name}' is not supported by clink")
+            raise RegistryLoadError(f"CLI '{runner}' is not supported by clink")
 
         executable = self._resolve_executable(raw, internal_defaults, source_path)
 

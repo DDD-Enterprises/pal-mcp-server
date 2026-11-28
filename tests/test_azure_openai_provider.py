@@ -94,6 +94,7 @@ def test_client_initialization_uses_endpoint_and_version(dummy_azure_client):
 
     assert dummy_azure_client["client_kwargs"]["azure_endpoint"] == "https://example.openai.azure.com"
     assert dummy_azure_client["client_kwargs"]["api_version"] == "2024-03-15-preview"
+    assert dummy_azure_client["client_kwargs"]["max_retries"] == 0
 
 
 def test_deployment_overrides_capabilities(dummy_azure_client):

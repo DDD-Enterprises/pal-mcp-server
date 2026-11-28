@@ -530,6 +530,20 @@ of the evidence, even when it strongly points in one direction.""",
                 # Add continuation information and workflow customization
                 response_data = self.customize_workflow_response(response_data, request)
 
+                errors = [r for r in self.accumulated_responses if r["status"] == "error"]
+                if errors:
+                    response_data["models_errored"] = [r["model"] for r in errors]
+                    if request.step_number == request.total_steps:
+                        response_data["status"] = "consensus_incomplete"
+                        response_data["consensus_workflow_status"] = "incomplete"
+                        response_data["consensus_complete"] = False
+                        response_data.pop("complete_consensus", None)
+                        response_data["next_steps"] = "Report the available verdicts and the consultation errors."
+                    elif model_response["status"] == "error":
+                        response_data["status"] = "model_consultation_failed"
+                        response_data["consensus_workflow_status"] = "consultation_failed"
+                        response_data["next_steps"] = "Report this error and continue with the next requested model."
+
                 # Ensure consensus-specific metadata is attached
                 self._add_workflow_metadata(response_data, arguments)
 
