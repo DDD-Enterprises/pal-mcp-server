@@ -270,3 +270,10 @@ class TestDIALProvider:
 
         # Assert that the deployment clients cache is cleared
         assert not provider._deployment_clients
+
+
+def test_deployment_client_disables_sdk_retries():
+    provider = DIALModelProvider("test-key")
+    with patch("openai.OpenAI") as client:
+        provider._get_deployment_client("test-deployment")
+        assert client.call_args.kwargs["max_retries"] == 0

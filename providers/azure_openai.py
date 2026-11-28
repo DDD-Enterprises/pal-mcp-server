@@ -251,6 +251,7 @@ class AzureOpenAIProvider(OpenAICompatibleProvider):
 
                     client_kwargs = {
                         "api_key": self.api_key,
+                        "max_retries": 0,
                         "azure_endpoint": self.azure_endpoint,
                         "api_version": self.api_version,
                         "http_client": http_client,

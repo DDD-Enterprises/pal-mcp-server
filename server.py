@@ -903,6 +903,9 @@ def parse_model_option(model_string: str) -> tuple[str, Optional[str]]:
         tuple: (model_name, option) where option may be None
     """
     if ":" in model_string and not model_string.startswith("http"):  # Avoid parsing URLs
+        if model_string.count(":") == 1 and model_string.split(":", 1)[1].strip().lower() == "batch":
+            return model_string.strip(), None
+
         # Check if this looks like an OpenRouter model (contains /)
         if "/" in model_string and model_string.count(":") == 1:
             # Could be openai/gpt-4:something - check what comes after colon

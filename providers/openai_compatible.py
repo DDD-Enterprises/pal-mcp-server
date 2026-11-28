@@ -385,6 +385,10 @@ class OpenAICompatibleProvider(ModelProvider):
         logging.debug(f"Response object type: {type(response)}")
         logging.debug(f"Response attributes: {dir(response)}")
 
+        status = getattr(response, "status", None)
+        if isinstance(status, str) and status != "completed":
+            raise ValueError(f"Responses API returned {status} status")
+
         if not hasattr(response, "output_text"):
             raise ValueError(f"o3-pro response missing output_text field. Response type: {type(response).__name__}")
 
@@ -396,6 +400,9 @@ class OpenAICompatibleProvider(ModelProvider):
 
         if not isinstance(content, str):
             raise ValueError(f"o3-pro output_text is not a string. Got type: {type(content).__name__}")
+
+        if not content.strip():
+            raise ValueError("Responses API returned blank output_text")
 
         return content
 

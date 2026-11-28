@@ -142,6 +142,7 @@ class DIALModelProvider(RegistryBackedProviderMixin, OpenAICompatibleProvider):
                 # Use placeholder API key - Authorization header will be removed by http_client event hook
                 self._deployment_clients[deployment] = OpenAI(
                     api_key="placeholder-not-used",
+                    max_retries=0,
                     base_url=deployment_url,
                     http_client=self._http_client,  # Pass the shared client with Api-Key header
                     default_query={"api-version": self.api_version},  # Add api-version as query param

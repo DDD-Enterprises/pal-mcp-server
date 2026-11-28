@@ -60,7 +60,7 @@ def test_secondary_then_native_for_same_model(brokers):
 def test_unknown_and_batch_ids_have_no_interactive_route(brokers):
     from server import parse_model_option
 
-    for name in ["anthropic/missing", "openai/gpt-6.2-sol:batch"]:
+    for name in ["anthropic/missing", "openai/gpt-6.2-sol:batch", "gpt-6.2-sol:batch"]:
         assert Registry.get_provider_for_model(parse_model_option(name)[0]) is None
 
 
@@ -105,9 +105,48 @@ def test_pro_mode_uses_stateless_responses(brokers):
     provider = Registry.get_provider_for_model("openai/gpt-5.6-luna-pro")
     provider._client = Mock()
     provider._client.responses.create.return_value.output_text = "OK"
+    provider._client.responses.create.return_value.status = "completed"
     provider.generate_content("Synthetic", "openai/gpt-5.6-luna-pro", thinking_mode="low", max_output_tokens=32)
     args = provider._client.responses.create.call_args.kwargs
     assert args["model"] == "gpt-5.6-luna"
     assert args["reasoning"] == {"mode": "pro", "effort": "low"}
     assert args["store"] is False and args["stream"] is False
     provider._client.chat.completions.create.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "text,status",
+    [
+        ("", "completed"),
+        ("  ", "completed"),
+        ("partial", "incomplete"),
+        ("bad", "failed"),
+        ("partial", "cancelled"),
+        ("partial", "in_progress"),
+        ("partial", "queued"),
+    ],
+)
+@pytest.mark.asyncio
+async def test_responses_invalid_verdict_incomplete_consensus(brokers, text, status):
+    import json
+
+    provider = Registry.get_provider_for_model("openai/gpt-5.6-luna-pro")
+    provider._client = Mock()
+    provider._client.responses.create.return_value.output_text = text
+    provider._client.responses.create.return_value.status = status
+    tool = ConsensusTool()
+    result = await tool.execute_workflow(
+        {
+            "step": "Synthetic proposal",
+            "findings": "Synthetic finding",
+            "step_number": 1,
+            "total_steps": 1,
+            "next_step_required": False,
+            "models": [{"model": "openai/gpt-5.6-luna-pro"}],
+        }
+    )
+    body = json.loads(result[0].text)
+    assert body["status"] == "consensus_incomplete"
+    assert body["consensus_complete"] is False
+    assert body["models_errored"] == ["openai/gpt-5.6-luna-pro"]
+    provider._client.responses.create.assert_called_once()

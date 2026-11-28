@@ -77,3 +77,10 @@ class TestParseModelOption:
         model, option = parse_model_option("openai/gpt-3.5-turbo:Free")
         assert model == "openai/gpt-3.5-turbo:Free"  # Original case preserved
         assert option is None
+
+
+def test_batch_identifiers_preserved():
+    for name in ("gpt-6.2-sol:batch", "openai/gpt-6.2-sol:batch"):
+        assert parse_model_option(name) == (name, None)
+    assert parse_model_option("o3:for") == ("o3", "for")
+    assert parse_model_option("llama3.2:latest") == ("llama3.2", "latest")
