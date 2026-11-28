@@ -1,4 +1,5 @@
-# Standalone definition for the existing Dopemux PAL stdio service.
+# Isolated ownership for the Dopemux PAL stdio service.
+name: dopemux-pal-kimi
 services:
   pal-stdio:
     container_name: mcp-pal-stdio

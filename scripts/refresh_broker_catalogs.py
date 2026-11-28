@@ -5,7 +5,14 @@ import json
 from pathlib import Path
 
 CONF = Path(__file__).resolve().parents[1] / "conf"
-VENDORS = {"openai": "openai", "google": "google", "anthropic": "anthropic", "xai": "x-ai"}
+VENDORS = {
+    "openai": "openai",
+    "google": "google",
+    "anthropic": "anthropic",
+    "xai": "x-ai",
+    "moonshot": "moonshotai",
+    "moonshotai": "moonshotai",
+}
 CHAT = "/v1/chat/completions"
 RESPONSES = "/v1/responses"
 # CheaperInference documents these as base model + reasoning.mode=pro, not separate wire IDs.
@@ -91,6 +98,9 @@ def compile_catalogs(ci_rows, router_rows):
         namespace = VENDORS.get(row["owned_by"].lower()) or legacy_namespaces.get(name)
         if not namespace and name != "glm-4.6":
             continue
+        # Preserve legacy Kimi-2 aliases; admit new Moonshot Kimi-3 IDs only.
+        if namespace == "moonshotai" and name not in legacy_namespaces and not name.startswith("kimi-k3"):
+            continue
         endpoints = row.get("supported_endpoints", [])
         if row.get("type") != "text" or name.endswith("-batch") or not {CHAT, RESPONSES}.intersection(endpoints):
             continue
@@ -124,6 +134,8 @@ def compile_catalogs(ci_rows, router_rows):
         namespace, _, bare = wire.partition("/")
         if namespace not in VENDORS.values() and wire not in previous_router:
             continue
+        if namespace == "moonshotai" and wire not in previous_router and not bare.startswith("kimi-k3"):
+            continue
         if ":" in wire or row["architecture"]["output_modalities"] != ["text"]:
             continue
         logical = EQUIVALENTS.get(wire, bare)
@@ -142,14 +154,34 @@ def compile_catalogs(ci_rows, router_rows):
     for entries in [primary, secondary]:
         if not all(any(n in entry["model_name"] for entry in entries) for n in ["gemini-", "claude-", "gpt-", "grok-"]):
             raise ValueError("Incomplete catalog for the four configured families")
-        seen = {}
-        for entry in entries:
-            for alias in [entry["model_name"], *entry["aliases"]]:
-                owner = seen.setdefault(alias.lower(), entry["model_name"])
-                if owner != entry["model_name"]:
-                    raise ValueError(f"Catalog alias {alias} names both {owner} and {entry['model_name']}")
+        validate_aliases(entries)
         entries.sort(key=lambda entry: entry["model_name"])
     return primary, secondary
+
+
+def validate_aliases(entries):
+    seen = {}
+    for entry in entries:
+        for alias in [entry["model_name"], *entry["aliases"]]:
+            owner = seen.setdefault(alias.lower(), entry["model_name"])
+            if owner != entry["model_name"]:
+                raise ValueError(f"Catalog alias {alias} names both {owner} and {entry['model_name']}")
+
+
+def additive_catalog(path, generated, prefix):
+    baseline = json.loads(path.read_text())["models"]
+    if not isinstance(baseline, list) or not baseline:
+        raise ValueError(f"Missing baseline catalog in {path}")
+    existing = {entry["model_name"] for entry in baseline}
+    if len(existing) != len(baseline):
+        raise ValueError(f"Duplicate baseline models in {path}")
+    combined = baseline + [
+        entry
+        for entry in generated
+        if entry["model_name"] not in existing and entry["model_name"].split("/")[-1].startswith(prefix)
+    ]
+    validate_aliases(combined)
+    return sorted(combined, key=lambda entry: entry["model_name"])
 
 
 def main():
@@ -157,9 +189,18 @@ def main():
     parser.add_argument("cheaperinference", type=Path)
     parser.add_argument("openrouter", type=Path)
     parser.add_argument("--output-dir", type=Path, default=CONF)
+    parser.add_argument("--add-only-prefix", help="Preserve baseline entries and add matching absent models")
     args = parser.parse_args()
+    if args.add_only_prefix is not None and not args.add_only_prefix.strip():
+        parser.error("--add-only-prefix must not be empty")
     primary, secondary = compile_catalogs(rows(args.cheaperinference), rows(args.openrouter))
-    for filename, entries in [("cheaperinference_models.json", primary), ("openrouter_chat_models.json", secondary)]:
+    catalogs = [("cheaperinference_models.json", primary), ("openrouter_chat_models.json", secondary)]
+    if args.add_only_prefix is not None:
+        catalogs = [
+            (name, additive_catalog(args.output_dir / name, entries, args.add_only_prefix))
+            for name, entries in catalogs
+        ]
+    for filename, entries in catalogs:
         dest = args.output_dir / filename
         dest.write_text(json.dumps({"models": entries}, indent=2) + "\n")
         print(f"{len(entries)} models in {filename}")

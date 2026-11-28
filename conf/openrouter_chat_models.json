@@ -789,6 +789,34 @@
       "supports_json_mode": true
     },
     {
+      "model_name": "moonshotai/kimi-k3",
+      "aliases": [
+        "kimi-k3"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 943718,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "moonshotai/kimi-k3.1-pro",
+      "aliases": [
+        "kimi-k3.1-pro"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 943718,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
       "model_name": "nvidia/nemotron-3-nano-30b-a3b",
       "aliases": [
         "nemotron-3-nano-30b-a3b",

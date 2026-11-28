@@ -1929,6 +1929,48 @@
       "supports_json_mode": true
     },
     {
+      "model_name": "kimi-k3",
+      "aliases": [
+        "moonshotai/kimi-k3"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 131072,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "kimi-k3-fast",
+      "aliases": [
+        "moonshotai/kimi-k3-fast"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 1000000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "kimi-k3.1-pro",
+      "aliases": [
+        "moonshotai/kimi-k3.1-pro"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 1048576,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
       "model_name": "llama-4-maverick",
       "aliases": [
         "llama4",
