@@ -6,6 +6,7 @@ from utils.env import get_env
 
 from .openai_compatible import OpenAICompatibleProvider
 from .registries.openrouter import OpenRouterModelRegistry
+from .registry import ModelProviderRegistry
 from .shared import (
     ModelCapabilities,
     ProviderType,
@@ -59,6 +60,8 @@ class OpenRouterProvider(OpenAICompatibleProvider):
             OpenRouterProvider._registry = OpenRouterModelRegistry()
             # Log loaded models and aliases only on first load
             models = self._registry.list_models()
+            if ModelProviderRegistry.broker_first() and not models:
+                raise ValueError("Empty OpenRouter model catalog")
             aliases = self._registry.list_aliases()
             logging.info(f"OpenRouter loaded {len(models)} models with {len(aliases)} aliases")
 
@@ -78,7 +81,7 @@ class OpenRouterProvider(OpenAICompatibleProvider):
             return capabilities
 
         base_identifier = canonical_name.split(":", 1)[0]
-        if "/" in base_identifier:
+        if "/" in base_identifier and not ModelProviderRegistry.broker_first():
             logging.debug(
                 "Using generic OpenRouter capabilities for %s (provider/model format detected)", canonical_name
             )
@@ -164,7 +167,13 @@ class OpenRouterProvider(OpenAICompatibleProvider):
 
         # When restrictions are in place, don't include aliases to avoid confusion
         # Only return the canonical model names that are actually allowed
-        actual_include_aliases = include_aliases and not respect_restrictions
+        actual_include_aliases = include_aliases and (
+            not respect_restrictions
+            or (
+                ModelProviderRegistry.broker_first()
+                and not restriction_service.has_restrictions(self.get_provider_type())
+            )
+        )
 
         return ModelCapabilities.collect_model_names(
             allowed_configs,

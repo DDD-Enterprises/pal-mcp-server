@@ -46,6 +46,42 @@
       "use_openai_response_api": true,
       "max_image_size_mb": 20.0,
       "allow_code_generation": true
+    },
+    {
+      "model_name": "grok-4.3",
+      "aliases": [
+        "x-ai/grok-4.3",
+        "grok-4.3-latest"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 1000000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true
+    },
+    {
+      "model_name": "grok-4.6",
+      "aliases": [
+        "x-ai/grok-4.6",
+        "grok-4.6-latest"
+      ],
+      "context_window": 500000,
+      "max_output_tokens": 500000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true
+    },
+    {
+      "model_name": "grok-4.7",
+      "aliases": [
+        "x-ai/grok-4.7",
+        "grok-4.7-latest"
+      ],
+      "context_window": 500000,
+      "max_output_tokens": 500000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true
     }
   ]
 }

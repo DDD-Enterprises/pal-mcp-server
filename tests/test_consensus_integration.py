@@ -260,7 +260,7 @@ async def test_consensus_auto_mode_with_openrouter_and_gemini(monkeypatch):
         assert step1_output and step1_output[0].type == "text"
         step1_payload = json.loads(step1_output[0].text)
 
-        assert step1_payload["status"] == "analysis_and_first_model_consulted"
+        assert step1_payload["status"] == "model_consultation_failed"
         assert step1_payload["model_consulted"] == "claude-3-5-flash-20241022"
         assert step1_payload["model_response"]["status"] == "error"
         assert "claude-3-5-flash-20241022" in step1_payload["model_response"]["error"]
@@ -288,6 +288,8 @@ async def test_consensus_auto_mode_with_openrouter_and_gemini(monkeypatch):
     assert step2_output and step2_output[0].type == "text"
     step2_payload = json.loads(step2_output[0].text)
 
+    assert step2_payload["status"] == "consensus_incomplete"
+    assert not step2_payload["consensus_complete"]
     serialized = json.dumps(step2_payload)
     assert "auto" not in serialized.lower(), "Auto model leakage should be resolved"
     assert "gpt-5-mini" in serialized or "claude-3-5-flash-20241022" in serialized

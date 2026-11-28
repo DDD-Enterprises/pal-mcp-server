@@ -265,7 +265,10 @@ class ModelProvider(ABC):
         if max_attempts < 1:
             raise ValueError("max_attempts must be >= 1")
 
-        attempts = max_attempts
+        from .registry import ModelProviderRegistry
+
+        # An ambiguous transport failure may already have produced a billable completion.
+        attempts = 1 if ModelProviderRegistry.broker_first() else max_attempts
         delays = delays or []
         last_exc: Optional[Exception] = None
 

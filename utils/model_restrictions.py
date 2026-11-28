@@ -59,6 +59,8 @@ class ModelRestrictionService:
 
     # Environment variable names
     ENV_VARS = {
+        ProviderType.CHEAPERINFERENCE: "CHEAPERINFERENCE_ALLOWED_MODELS",
+        ProviderType.ANTHROPIC: "ANTHROPIC_ALLOWED_MODELS",
         ProviderType.OPENAI: "OPENAI_ALLOWED_MODELS",
         ProviderType.GOOGLE: "GOOGLE_ALLOWED_MODELS",
         ProviderType.XAI: "XAI_ALLOWED_MODELS",
@@ -68,6 +70,8 @@ class ModelRestrictionService:
 
     # Block-list environment variable names (parallel to ENV_VARS)
     DISALLOWED_ENV_VARS = {
+        ProviderType.CHEAPERINFERENCE: "CHEAPERINFERENCE_DISALLOWED_MODELS",
+        ProviderType.ANTHROPIC: "ANTHROPIC_DISALLOWED_MODELS",
         ProviderType.OPENAI: "OPENAI_DISALLOWED_MODELS",
         ProviderType.GOOGLE: "GOOGLE_DISALLOWED_MODELS",
         ProviderType.XAI: "XAI_DISALLOWED_MODELS",

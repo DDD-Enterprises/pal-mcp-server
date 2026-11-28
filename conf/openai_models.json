@@ -832,6 +832,97 @@
       "supports_images": true,
       "supports_temperature": true,
       "max_image_size_mb": 20.0
+    },
+    {
+      "model_name": "gpt-6-luna",
+      "aliases": [
+        "openai/gpt-6-luna"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_temperature": false,
+      "use_openai_response_api": true
+    },
+    {
+      "model_name": "gpt-6-sol",
+      "aliases": [
+        "openai/gpt-6-sol"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_temperature": false,
+      "use_openai_response_api": true
+    },
+    {
+      "model_name": "gpt-6-astra",
+      "aliases": [
+        "openai/gpt-6-astra"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_temperature": false,
+      "use_openai_response_api": true
+    },
+    {
+      "model_name": "gpt-6.1-terra",
+      "aliases": [
+        "openai/gpt-6.1-terra"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_temperature": false,
+      "use_openai_response_api": true
+    },
+    {
+      "model_name": "gpt-6.1-sol",
+      "aliases": [
+        "openai/gpt-6.1-sol"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_temperature": false,
+      "use_openai_response_api": true
+    },
+    {
+      "model_name": "gpt-6.2-sol",
+      "aliases": [
+        "openai/gpt-6.2-sol"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_temperature": false,
+      "use_openai_response_api": true
+    },
+    {
+      "model_name": "gpt-6.2-astra",
+      "aliases": [
+        "openai/gpt-6.2-astra"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_temperature": false,
+      "use_openai_response_api": true
     }
   ]
 }

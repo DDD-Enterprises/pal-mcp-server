@@ -57,6 +57,7 @@ class ModelCapabilities:
     supports_json_mode: bool = False
     supports_temperature: bool = True
     use_openai_response_api: bool = False
+    pro_mode_base_model: Optional[str] = None
     default_reasoning_effort: Optional[str] = None
     allow_code_generation: bool = (
         False  # Enables structured code generation in chat tool for substantial implementations

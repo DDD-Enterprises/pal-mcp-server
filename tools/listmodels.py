@@ -88,6 +88,30 @@ class ListModelsTool(BaseTool):
 
         output_lines = ["# Available AI Models\n"]
 
+        if ModelProviderRegistry.broker_first():
+            routes = ModelProviderRegistry.get_available_models()
+            for kind in ModelProviderRegistry.provider_order():
+                provider = ModelProviderRegistry.get_provider(kind)
+                if not provider:
+                    continue
+                names = [name for name, owner in routes.items() if owner == kind]
+                grouped = {}
+                for name in names:
+                    canonical = provider.get_capabilities(name).model_name
+                    grouped.setdefault(canonical, []).append(name)
+                output_lines.append(f"## {kind.value} ({len(grouped)} models)")
+                for canonical, names in sorted(grouped.items()):
+                    aliases = sorted(name for name in names if name != canonical)
+                    suffix = f" ({', '.join(aliases)})" if aliases else ""
+                    output_lines.append(f"- `{canonical}`{suffix}")
+            result = ToolOutput(
+                status="success",
+                content="\n".join(output_lines),
+                content_type="text",
+                metadata={"tool_name": self.name},
+            )
+            return [TextContent(type="text", text=result.model_dump_json())]
+
         restriction_service = get_restriction_service()
         restricted_models_by_provider: dict[ProviderType, list[str]] = {}
 
@@ -98,6 +122,8 @@ class ListModelsTool(BaseTool):
 
         # Map provider types to friendly names and their models
         provider_info = {
+            ProviderType.CHEAPERINFERENCE: {"name": "CheaperInference", "env_key": "CHEAPERINFERENCE_API_KEY"},
+            ProviderType.ANTHROPIC: {"name": "Anthropic", "env_key": "ANTHROPIC_API_KEY"},
             ProviderType.GOOGLE: {"name": "Google Gemini", "env_key": "GEMINI_API_KEY"},
             ProviderType.OPENAI: {"name": "OpenAI", "env_key": "OPENAI_API_KEY"},
             ProviderType.AZURE: {"name": "Azure OpenAI", "env_key": "AZURE_OPENAI_API_KEY"},

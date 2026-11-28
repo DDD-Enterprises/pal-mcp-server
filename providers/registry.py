@@ -3,7 +3,7 @@
 import logging
 from typing import TYPE_CHECKING, Optional
 
-from utils.env import get_env
+from utils.env import get_env, get_env_bool
 
 from .base import ModelProvider
 from .shared import ProviderType
@@ -36,14 +36,27 @@ class ModelProviderRegistry:
     # Provider priority order for model selection
     # Native APIs first, then custom endpoints, then catch-all providers
     PROVIDER_PRIORITY_ORDER = [
+        ProviderType.CHEAPERINFERENCE,
         ProviderType.GOOGLE,  # Direct Gemini access
         ProviderType.OPENAI,  # Direct OpenAI access
         ProviderType.AZURE,  # Azure-hosted OpenAI deployments
         ProviderType.XAI,  # Direct X.AI GROK access
+        ProviderType.ANTHROPIC,
         ProviderType.DIAL,  # DIAL unified API access
         ProviderType.CUSTOM,  # Local/self-hosted models
         ProviderType.OPENROUTER,  # Catch-all for cloud models
     ]
+
+    @classmethod
+    def provider_order(cls):
+        if not cls.broker_first():
+            return cls.PROVIDER_PRIORITY_ORDER
+        brokers = [ProviderType.CHEAPERINFERENCE, ProviderType.OPENROUTER]
+        return brokers + [p for p in cls.PROVIDER_PRIORITY_ORDER if p not in brokers]
+
+    @staticmethod
+    def broker_first():
+        return get_env_bool("PAL_BROKER_FIRST") or bool(get_env("CHEAPERINFERENCE_API_KEY"))
 
     def __new__(cls):
         """Singleton pattern for registry."""
@@ -154,10 +167,8 @@ class ModelProviderRegistry:
     def get_provider_for_model(cls, model_name: str) -> Optional[ModelProvider]:
         """Get provider instance for a specific model name.
 
-        Provider priority order:
-        1. Native APIs (GOOGLE, OPENAI) - Most direct and efficient
-        2. CUSTOM - For local/private models with specific endpoints
-        3. OPENROUTER - Catch-all for cloud models via unified API
+        The configured order applies to both canonical names and aliases.
+        Selection completes before any inference request is sent.
 
         Args:
             model_name: Name of the model (e.g., "gemini-2.5-flash", "gpt5")
@@ -172,7 +183,7 @@ class ModelProviderRegistry:
         logging.debug(f"Registry instance: {instance}")
         logging.debug(f"Available providers in registry: {list(instance._providers.keys())}")
 
-        for provider_type in cls.PROVIDER_PRIORITY_ORDER:
+        for provider_type in cls.provider_order():
             if provider_type in instance._providers:
                 logging.debug(f"Found {provider_type} in registry")
                 # Get or create provider instance
@@ -211,7 +222,9 @@ class ModelProviderRegistry:
         models: dict[str, ProviderType] = {}
         instance = cls()
 
-        for provider_type in instance._providers:
+        for provider_type in cls.provider_order():
+            if provider_type not in instance._providers:
+                continue
             provider = cls.get_provider(provider_type)
             if not provider:
                 continue
@@ -231,7 +244,7 @@ class ModelProviderRegistry:
                 )
                 if restricted_display:
                     for model_name in restricted_display:
-                        models[model_name] = provider_type
+                        models.setdefault(model_name, provider_type)
                     continue
 
             for model_name in available:
@@ -252,7 +265,7 @@ class ModelProviderRegistry:
                 ):
                     logging.debug("Model %s filtered by restrictions", model_name)
                     continue
-                models[model_name] = provider_type
+                models.setdefault(model_name, provider_type)
 
         return models
 
@@ -332,6 +345,8 @@ class ModelProviderRegistry:
             API key string or None if not found
         """
         key_mapping = {
+            ProviderType.CHEAPERINFERENCE: "CHEAPERINFERENCE_API_KEY",
+            ProviderType.ANTHROPIC: "ANTHROPIC_API_KEY",
             ProviderType.GOOGLE: "GEMINI_API_KEY",
             ProviderType.OPENAI: "OPENAI_API_KEY",
             ProviderType.AZURE: "AZURE_OPENAI_API_KEY",
@@ -401,7 +416,7 @@ class ModelProviderRegistry:
         first_available_model = None
 
         # Ask each provider for their preference in priority order
-        for provider_type in cls.PROVIDER_PRIORITY_ORDER:
+        for provider_type in cls.provider_order():
             provider = cls.get_provider(provider_type)
             if provider:
                 # 1. Registry filters the models first

@@ -1,0 +1,1831 @@
+{
+  "models": [
+    {
+      "model_name": "anthropic/claude-fable-5",
+      "aliases": [
+        "claude-fable-5"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-fable-5.1",
+      "aliases": [
+        "anthropic/claude-fable-5-1",
+        "claude-fable-5-1",
+        "claude-fable-5.1"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-fable-5.2",
+      "aliases": [
+        "anthropic/claude-fable-5-2",
+        "claude-fable-5-2",
+        "claude-fable-5.2"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-haiku-4.5",
+      "aliases": [
+        "anthropic/claude-haiku-4-5",
+        "claude-haiku-4-5",
+        "claude-haiku-4.5"
+      ],
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-haiku-5.5",
+      "aliases": [
+        "anthropic/claude-haiku-5-5",
+        "claude-haiku-5-5",
+        "claude-haiku-5.5"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-opus-4.1",
+      "aliases": [
+        "anthropic/claude-opus-4-1",
+        "claude-opus-4-1",
+        "claude-opus-4.1",
+        "opus4.1"
+      ],
+      "context_window": 200000,
+      "max_output_tokens": 32000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": false
+    },
+    {
+      "model_name": "anthropic/claude-opus-4.5",
+      "aliases": [
+        "anthropic/claude-opus-4-5",
+        "claude-opus-4-5",
+        "claude-opus-4.5",
+        "opus",
+        "opus4.5"
+      ],
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-opus-4.6",
+      "aliases": [
+        "anthropic/claude-opus-4-6",
+        "claude-opus-4-6",
+        "claude-opus-4.6"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-opus-4.7",
+      "aliases": [
+        "anthropic/claude-opus-4-7",
+        "claude-opus-4-7",
+        "claude-opus-4.7"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-opus-4.8",
+      "aliases": [
+        "anthropic/claude-opus-4-8",
+        "claude-opus-4-8",
+        "claude-opus-4.8"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-opus-5",
+      "aliases": [
+        "claude-opus",
+        "claude-opus-5",
+        "opus-5"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-opus-5.5",
+      "aliases": [
+        "anthropic/claude-opus-5-5",
+        "claude-opus-5-5",
+        "claude-opus-5.5"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-sonnet-4.5",
+      "aliases": [
+        "anthropic/claude-sonnet-4-5",
+        "claude-sonnet-4-5",
+        "claude-sonnet-4.5",
+        "sonnet",
+        "sonnet4.5"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 64000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-sonnet-4.6",
+      "aliases": [
+        "anthropic/claude-sonnet-4-6",
+        "claude-sonnet-4-6",
+        "claude-sonnet-4.6"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-sonnet-5",
+      "aliases": [
+        "claude-sonnet",
+        "claude-sonnet-5",
+        "sonnet-5"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "anthropic/claude-sonnet-5.5",
+      "aliases": [
+        "anthropic/claude-sonnet-5-5",
+        "claude-sonnet-5-5",
+        "claude-sonnet-5.5"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "deepseek/deepseek-r1-0528",
+      "aliases": [
+        "deepseek",
+        "deepseek-r1",
+        "deepseek-r1-0528",
+        "deepseek-thinking",
+        "r1"
+      ],
+      "context_window": 163840,
+      "max_output_tokens": 32768,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "deepseek/deepseek-v4-flash",
+      "aliases": [
+        "deepseek-flash",
+        "deepseek-v4-flash"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 943718,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "deepseek/deepseek-v4-pro",
+      "aliases": [
+        "deepseek-v4",
+        "deepseek-v4-pro"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-2.5-flash",
+      "aliases": [
+        "flash",
+        "flash-2.5",
+        "flash2.5",
+        "gemini-2.5-flash",
+        "gemini-flash"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65535,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-2.5-flash-lite",
+      "aliases": [
+        "flashlite2.5",
+        "gemini-2.5-flash-lite"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65535,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-2.5-pro",
+      "aliases": [
+        "gemini-2.5",
+        "gemini-2.5-pro",
+        "gemini-pro-2.5",
+        "pro-2.5-openrouter"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-2.5-pro-preview",
+      "aliases": [
+        "gemini-2.5-pro-preview"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3-flash-preview",
+      "aliases": [
+        "flash3",
+        "gemini-3-flash",
+        "gemini-3-flash-preview",
+        "google/gemini-3-flash"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.1-flash-lite",
+      "aliases": [
+        "gemini-3.1-flash-lite",
+        "gemini-flash-lite-latest",
+        "or-gemini-flash-lite"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.1-flash-lite-preview",
+      "aliases": [
+        "gemini-3.1-flash-lite-preview"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.1-pro-preview",
+      "aliases": [
+        "gemini-3.1-pro",
+        "gemini-3.1-pro-preview",
+        "gemini-pro-latest",
+        "or-gemini-pro"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.1-pro-preview-customtools",
+      "aliases": [
+        "gemini-3.1-pro-preview-customtools"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.5-flash",
+      "aliases": [
+        "flash3.5",
+        "gemini-3.5-flash",
+        "gemini-flash-latest",
+        "or-gemini-flash"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.5-flash-lite",
+      "aliases": [
+        "gemini-3.5-flash-lite"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.6-flash",
+      "aliases": [
+        "gemini-3.6-flash"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.7-flash",
+      "aliases": [
+        "gemini-3.7-flash"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-3.8-flash",
+      "aliases": [
+        "gemini-3.8-flash"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-4-argon",
+      "aliases": [
+        "gemini-4-argon"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 943718,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-4-carbon",
+      "aliases": [
+        "gemini-4-carbon"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 943718,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-4-hydrogen",
+      "aliases": [
+        "gemini-4-hydrogen"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 943718,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemini-4-neon",
+      "aliases": [
+        "gemini-4-neon"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemma-2-27b-it",
+      "aliases": [
+        "gemma-2-27b-it"
+      ],
+      "context_window": 8192,
+      "max_output_tokens": 2048,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": false,
+      "supports_function_calling": false,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemma-3-12b-it",
+      "aliases": [
+        "gemma-3-12b-it"
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemma-3-27b-it",
+      "aliases": [
+        "gemma-3-27b-it"
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemma-3-4b-it",
+      "aliases": [
+        "gemma-3-4b-it"
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 117964,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": false,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemma-4-26b-a4b-it",
+      "aliases": [
+        "gemma-4-26b",
+        "gemma-4-26b-a4b-it",
+        "gemma-mini"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 235929,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "google/gemma-4-31b-it",
+      "aliases": [
+        "gemma",
+        "gemma-4",
+        "gemma-4-31b",
+        "gemma-4-31b-it"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 235929,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "meta-llama/llama-4-maverick",
+      "aliases": [
+        "llama-4-maverick",
+        "llama4",
+        "llama4-maverick"
+      ],
+      "context_window": 524288,
+      "max_output_tokens": 32768,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "meta-llama/llama-4-scout",
+      "aliases": [
+        "llama-4-scout",
+        "llama4-scout"
+      ],
+      "context_window": 327680,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": false
+    },
+    {
+      "model_name": "minimax/minimax-m2.5",
+      "aliases": [
+        "minimax-m2.5"
+      ],
+      "context_window": 65536,
+      "max_output_tokens": 58982,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "minimax/minimax-m3",
+      "aliases": [
+        "minimax",
+        "minimax-m3"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 235929,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "mistralai/mistral-large-2512",
+      "aliases": [
+        "mistral-large-2512",
+        "mistral-large-3"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 209715,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "mistralai/mistral-small-2603",
+      "aliases": [
+        "ministral",
+        "mistral-small",
+        "mistral-small-2603"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 209715,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "moonshotai/kimi-k2.5",
+      "aliases": [
+        "kimi-k2.5"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 235929,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "moonshotai/kimi-k2.6",
+      "aliases": [
+        "kimi",
+        "kimi-k2",
+        "kimi-k2.6"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 65535,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "nvidia/nemotron-3-nano-30b-a3b",
+      "aliases": [
+        "nemotron-3-nano-30b-a3b",
+        "nemotron-nano"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 235929,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "nvidia/nemotron-3-super-120b-a12b",
+      "aliases": [
+        "nemotron",
+        "nemotron-3-super-120b-a12b",
+        "nemotron-super"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-3.5-turbo-0613",
+      "aliases": [
+        "gpt-3.5-turbo-0613"
+      ],
+      "context_window": 4095,
+      "max_output_tokens": 3685,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-3.5-turbo-16k",
+      "aliases": [
+        "gpt-3.5-turbo-16k"
+      ],
+      "context_window": 16385,
+      "max_output_tokens": 4096,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4",
+      "aliases": [
+        "gpt-4"
+      ],
+      "context_window": 8191,
+      "max_output_tokens": 4096,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4.1",
+      "aliases": [
+        "gpt-4.1",
+        "gpt4.1"
+      ],
+      "context_window": 1047576,
+      "max_output_tokens": 942818,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4.1-mini",
+      "aliases": [
+        "gpt-4.1-mini",
+        "gpt4.1-mini"
+      ],
+      "context_window": 1047576,
+      "max_output_tokens": 942818,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4.1-nano",
+      "aliases": [
+        "gpt-4.1-nano",
+        "gpt4.1-nano"
+      ],
+      "context_window": 1047576,
+      "max_output_tokens": 942818,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4o",
+      "aliases": [
+        "gpt-4o",
+        "gpt4o"
+      ],
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4o-2024-05-13",
+      "aliases": [
+        "gpt-4o-2024-05-13"
+      ],
+      "context_window": 128000,
+      "max_output_tokens": 4096,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4o-2024-08-06",
+      "aliases": [
+        "gpt-4o-2024-08-06"
+      ],
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4o-2024-11-20",
+      "aliases": [
+        "gpt-4o-2024-11-20"
+      ],
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4o-mini",
+      "aliases": [
+        "gpt-4o-mini",
+        "gpt4o-mini"
+      ],
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-4o-mini-2024-07-18",
+      "aliases": [
+        "gpt-4o-mini-2024-07-18"
+      ],
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5",
+      "aliases": [
+        "gpt-5",
+        "gpt5"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5-mini",
+      "aliases": [
+        "gpt-5-mini",
+        "gpt5-mini",
+        "gpt5mini",
+        "mini"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 360000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5-nano",
+      "aliases": [
+        "gpt-5-nano",
+        "gpt5-nano",
+        "gpt5nano",
+        "nano"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 360000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5-pro",
+      "aliases": [
+        "gpt-5-pro",
+        "gpt-5pro",
+        "gpt5-pro",
+        "gpt5pro"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.1",
+      "aliases": [
+        "5.1",
+        "gpt-5.1",
+        "gpt5.1"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.1-codex",
+      "aliases": [
+        "codex-5.1",
+        "gpt-5.1-code",
+        "gpt-5.1-codex",
+        "gpt5.1-codex",
+        "gpt5.1code"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.1-codex-max",
+      "aliases": [
+        "codex-max",
+        "gpt-5.1-codex-max",
+        "gpt5.1-codex-max"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.1-codex-mini",
+      "aliases": [
+        "5.1-codex-mini",
+        "codex-mini",
+        "gpt-5.1-codex-mini",
+        "gpt5.1-codex-mini"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.2",
+      "aliases": [
+        "5.2",
+        "gpt-5.2",
+        "gpt5.2"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.2-codex",
+      "aliases": [
+        "codex-5.2",
+        "gpt-5.2-codex",
+        "gpt5.2-codex"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.2-pro",
+      "aliases": [
+        "gpt-5.2-pro",
+        "gpt5.2-pro",
+        "gpt5.2pro"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.3-codex",
+      "aliases": [
+        "codex-5.3",
+        "gpt-5.3-codex",
+        "gpt5.3-codex"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.4",
+      "aliases": [
+        "gpt-5-4",
+        "gpt-5.4",
+        "gpt5.4",
+        "or-gpt5.4"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.4-mini",
+      "aliases": [
+        "gpt-5.4-mini",
+        "gpt5.4-mini",
+        "gpt54mini"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.4-nano",
+      "aliases": [
+        "gpt-5.4-nano",
+        "gpt5.4-nano",
+        "gpt54nano"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.4-pro",
+      "aliases": [
+        "gpt-5.4-pro",
+        "gpt5.4-pro",
+        "gpt54pro",
+        "or-gpt5.4-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.5",
+      "aliases": [
+        "5.5",
+        "gpt-5.5",
+        "gpt5.5",
+        "gpt55",
+        "or-gpt5.5"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.5-pro",
+      "aliases": [
+        "gpt-5-5-pro",
+        "gpt-5.5-pro",
+        "gpt5.5-pro",
+        "gpt55pro",
+        "or-gpt5.5-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.6-luna",
+      "aliases": [
+        "gpt-5.6-luna",
+        "gpt5.6-luna",
+        "gpt56-luna",
+        "luna"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.6-luna-pro",
+      "aliases": [
+        "gpt-5.6-luna-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.6-sol",
+      "aliases": [
+        "gpt-5.6",
+        "gpt-5.6-sol",
+        "gpt5.6",
+        "gpt5.6-sol",
+        "gpt56",
+        "gpt56-sol",
+        "sol"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.6-sol-pro",
+      "aliases": [
+        "gpt-5.6-sol-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.6-terra",
+      "aliases": [
+        "gpt-5.6-terra",
+        "gpt5.6-terra",
+        "gpt56-terra",
+        "terra"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-5.6-terra-pro",
+      "aliases": [
+        "gpt-5.6-terra-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6-astra",
+      "aliases": [
+        "gpt-6-astra"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6-astra-pro",
+      "aliases": [
+        "gpt-6-astra-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6-luna",
+      "aliases": [
+        "gpt-6-luna"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6-luna-pro",
+      "aliases": [
+        "gpt-6-luna-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6-sol",
+      "aliases": [
+        "gpt-6-sol"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6-sol-pro",
+      "aliases": [
+        "gpt-6-sol-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.1-sol",
+      "aliases": [
+        "gpt-6.1-sol"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.1-sol-pro",
+      "aliases": [
+        "gpt-6.1-sol-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.1-terra",
+      "aliases": [
+        "gpt-6.1-terra"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.1-terra-pro",
+      "aliases": [
+        "gpt-6.1-terra-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.2-astra",
+      "aliases": [
+        "gpt-6.2-astra"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.2-astra-pro",
+      "aliases": [
+        "gpt-6.2-astra-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.2-sol",
+      "aliases": [
+        "gpt-6.2-sol"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-6.2-sol-pro",
+      "aliases": [
+        "gpt-6.2-sol-pro"
+      ],
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-chat-latest",
+      "aliases": [
+        "gpt-chat-latest"
+      ],
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": false,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-oss-120b",
+      "aliases": [
+        "gpt-oss",
+        "gpt-oss-120b"
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 117964,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-oss-20b",
+      "aliases": [
+        "gpt-oss-20b",
+        "gpt-oss-mini"
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 117964,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/gpt-oss-safeguard-20b",
+      "aliases": [
+        "gpt-oss-safeguard-20b"
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 117964,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/o3",
+      "aliases": [
+        "o3"
+      ],
+      "context_window": 200000,
+      "max_output_tokens": 100000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "openai/o3-pro",
+      "aliases": [
+        "o3-pro",
+        "o3pro"
+      ],
+      "context_window": 200000,
+      "max_output_tokens": 100000,
+      "supports_temperature": false,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "qwen/qwen3.6-flash",
+      "aliases": [
+        "qwen-flash",
+        "qwen3-flash",
+        "qwen3.6-flash"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 65536,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "qwen/qwen3.7-max",
+      "aliases": [
+        "qwen",
+        "qwen-max",
+        "qwen3-max",
+        "qwen3.7-max"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 131072,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "x-ai/grok-4.20",
+      "aliases": [
+        "grok-4.20",
+        "grok-4.20-reasoning",
+        "x-ai/grok-4.20-reasoning"
+      ],
+      "context_window": 2000000,
+      "max_output_tokens": 1800000,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "x-ai/grok-4.20-multi-agent",
+      "aliases": [
+        "grok-4.20-multi-agent"
+      ],
+      "context_window": 2000000,
+      "max_output_tokens": 1800000,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": false,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "x-ai/grok-4.3",
+      "aliases": [
+        "grok-4.3",
+        "grok-4.3-latest"
+      ],
+      "context_window": 1000000,
+      "max_output_tokens": 900000,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "x-ai/grok-4.5",
+      "aliases": [
+        "grok",
+        "grok-4.5",
+        "grok-4.5-latest",
+        "grok-build-latest",
+        "grok4.5"
+      ],
+      "context_window": 500000,
+      "max_output_tokens": 450000,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "x-ai/grok-4.6",
+      "aliases": [
+        "grok-4.6",
+        "grok-4.6-latest"
+      ],
+      "context_window": 500000,
+      "max_output_tokens": 450000,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "x-ai/grok-4.7",
+      "aliases": [
+        "grok-4.7",
+        "grok-4.7-latest"
+      ],
+      "context_window": 500000,
+      "max_output_tokens": 450000,
+      "supports_temperature": true,
+      "supports_images": true,
+      "max_image_size_mb": 4,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "z-ai/glm-4.7-flash",
+      "aliases": [
+        "glm-4.7-flash",
+        "glm-flash"
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 117964,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    },
+    {
+      "model_name": "z-ai/glm-5.1",
+      "aliases": [
+        "glm",
+        "glm-5.1",
+        "glm5"
+      ],
+      "context_window": 204800,
+      "max_output_tokens": 131072,
+      "supports_temperature": true,
+      "supports_images": false,
+      "max_image_size_mb": 0,
+      "supports_extended_thinking": true,
+      "supports_function_calling": true,
+      "supports_json_mode": true
+    }
+  ]
+}

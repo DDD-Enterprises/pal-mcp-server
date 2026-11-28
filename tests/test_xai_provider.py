@@ -161,7 +161,7 @@ class TestXAIProvider:
 
         provider = XAIModelProvider("test-key")
 
-        assert list(provider.MODEL_CAPABILITIES) == ["grok-4.5"]
+        assert set(provider.MODEL_CAPABILITIES) == {"grok-4.3", "grok-4.5", "grok-4.6", "grok-4.7"}
         assert isinstance(provider.MODEL_CAPABILITIES["grok-4.5"], ModelCapabilities)
 
     @patch("providers.openai_compatible.OpenAI")

@@ -1,0 +1,19 @@
+#!/bin/bash
+# Workstation deployment of just the PAL stdio service. Read credentials from the
+# caller's environment or macOS Keychain. Never print a resolved Compose config.
+set -euo pipefail
+PAL_RELEASE_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+export PAL_RELEASE_ROOT
+export DOPEMUX_ROOT="${DOPEMUX_ROOT:-$HOME/code/dopemux-mvp}"
+for name in CHEAPERINFERENCE_API_KEY OPENROUTER_API_KEY OPENAI_API_KEY GEMINI_API_KEY XAI_API_KEY ANTHROPIC_API_KEY; do
+  if [[ -z "${!name:-}" ]]; then
+    if [[ "$name" == CHEAPERINFERENCE_API_KEY ]]; then
+      value="$(security find-generic-password -s cheaperinference -a API_KEY -w 2>/dev/null || true)"
+    else
+      value="$(security find-generic-password -s "$name" -w 2>/dev/null || true)"
+    fi
+    export "$name=$value"
+  fi
+done
+exec docker compose -p dopemux -f "$PAL_RELEASE_ROOT/docker/compose.dopemux-pal.yml" \
+  up -d --no-deps --build pal-stdio

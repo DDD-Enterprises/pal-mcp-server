@@ -465,7 +465,15 @@ class OpenAICompatibleProvider(ModelProvider):
         )
 
         provider_type = self.get_provider_type()
-        if provider_type != ProviderType.OPENROUTER:
+        if provider_type == ProviderType.CHEAPERINFERENCE:
+            completion_params["store"] = False
+            completion_params["stream"] = False
+            if kwargs.get("thinking_mode"):
+                completion_params["reasoning"]["effort"] = kwargs["thinking_mode"]
+            if capabilities and capabilities.pro_mode_base_model:
+                completion_params["model"] = capabilities.pro_mode_base_model
+                completion_params["reasoning"]["mode"] = "pro"
+        elif provider_type != ProviderType.OPENROUTER:
             # xAI advises disabling server-side history for image requests because storage can make them fail.
             completion_params["store"] = not (provider_type == ProviderType.XAI and contains_images)
         else:
@@ -636,12 +644,24 @@ class OpenAICompatibleProvider(ModelProvider):
         # Use the effective temperature we calculated earlier
         supports_sampling = effective_temperature is not None
 
+        if (
+            capabilities
+            and capabilities.supports_extended_thinking
+            and kwargs.get("thinking_mode")
+            and self.get_provider_type() in {ProviderType.CHEAPERINFERENCE, ProviderType.OPENROUTER}
+        ):
+            completion_params["extra_body"] = {"reasoning": {"effort": kwargs["thinking_mode"]}}
+
         if supports_sampling:
             completion_params["temperature"] = effective_temperature
 
         # Add max tokens if specified and model supports it
         # O3/O4 models that don't support temperature also don't support max_tokens
-        if max_output_tokens and supports_sampling:
+        if max_output_tokens and (
+            supports_sampling
+            or self.get_provider_type()
+            in {ProviderType.CHEAPERINFERENCE, ProviderType.ANTHROPIC, ProviderType.OPENROUTER}
+        ):
             completion_params["max_tokens"] = max_output_tokens
 
         # Add any additional OpenAI-specific parameters
@@ -683,6 +703,8 @@ class OpenAICompatibleProvider(ModelProvider):
         def _attempt() -> ModelResponse:
             attempt_counter["value"] += 1
             response = self.client.chat.completions.create(**completion_params)
+            if not response.choices or not (response.choices[0].message.content or "").strip():
+                raise ValueError(f"{self.FRIENDLY_NAME} returned no answer for {resolved_model}")
 
             content = response.choices[0].message.content
             usage = self._extract_usage(response)
